@@ -1,5 +1,7 @@
 # General ChatGPT coding
 
+![Talking Computer](computertalk.png)
+
 ## Question
 
 I want to write UI and server formal code that can translate to Azure Functions and Unity UI but also into node js and HTML. How can I write an abstraction layer in pseudocode that enables this? More generally, how can I write a dependency free formally specified program on top of an abstraction layer in pseudocode?
