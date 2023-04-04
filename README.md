@@ -214,3 +214,47 @@ Client-side (HTML and JavaScript):
 </body>
 </html>
 ```
+
+# Question
+
+Give me a method to serve the HTML code.
+
+# Answer
+
+To serve the HTML code, you can update the server-side code to serve static files using the express.static middleware. First, create a new directory called public in your project folder, and move the HTML file into it. Let's rename the HTML file to index.html.
+
+Now, update the server-side code (Node.js with Express) as follows:
+```javascript
+const express = require('express');
+const app = express();
+const port = 3000;
+const bodyParser = require('body-parser');
+const { v4: uuidv4 } = require('uuid');
+const path = require('path');
+
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+let nameToGuidMap = new Map();
+
+app.post('/generateGUID', (req, res) => {
+    const name = req.body.name;
+    const guid = uuidv4();
+    nameToGuidMap.set(name, guid);
+    res.json({ guid });
+});
+
+app.get('/retrieveGUID/:name', (req, res) => {
+    const name = req.params.name;
+    const guid = nameToGuidMap.get(name);
+    res.json({ guid });
+});
+
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
+});
+```
+
+In this updated code, we've added app.use(express.static(path.join(__dirname, 'public'))); to serve the static files (HTML, CSS, and JavaScript) from the public directory.
+
+Now, when you run the server and visit http://localhost:3000, the index.html file will be served, and you can interact with the persistent "Hello, World!" application.
