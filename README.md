@@ -92,3 +92,48 @@ In this pseudocode, we define an InputOutputInterface with methods to handle use
 When you want to translate this pseudocode into a concrete implementation using ChatGPT, you should mention the specific language, platform, and library that you want the implementation for. For example:
 
 "Translate the given pseudocode into a concrete implementation using Python and the built-in input and print functions for the console."
+
+# Question
+
+Let's make the program need a server and a client to illustrate, so let's make the hello world program persistent, by which I mean that given a name for the first time we generate and store a unique guid, then every time we later on give this name as input we retrieve the unique guid and display it to the user in the hello world message.
+
+# Answer
+
+To create a persistent "Hello, World!" program with a server and client, we'll define separate interfaces for client-side UI handling and server-side data management. The server will store the unique GUID associated with each name, and the client will handle user input and display the greeting.
+
+Here's the updated pseudocode for this persistent "Hello, World!" application:
+
+```
+INTERFACE UIInterface
+    METHOD getInput(prompt)
+    METHOD displayOutput(message)
+
+INTERFACE ServerInterface
+    METHOD generateGUID(name)
+    METHOD retrieveGUID(name)
+
+CLASS PersistentHelloWorldApplication
+    ui: UIInterface
+    server: ServerInterface
+
+    CONSTRUCTOR(UIInterface, ServerInterface)
+        this.ui = UIInterface
+        this.server = ServerInterface
+
+    METHOD run()
+        ui.displayOutput("Welcome to the persistent Hello World application!")
+        name = ui.getInput("Please enter your name: ")
+        guid = server.retrieveGUID(name)
+
+        IF guid IS NULL
+            guid = server.generateGUID(name)
+
+        greeting = "Hello, " + name + "! Your unique GUID is: " + guid
+        ui.displayOutput(greeting)
+```
+
+In this pseudocode, we define UIInterface and ServerInterface with methods for handling user input and output, as well as managing GUIDs for user names. The PersistentHelloWorldApplication class has a constructor that takes a UIInterface and a ServerInterface as dependencies.
+
+When you want to translate this pseudocode into a concrete implementation using ChatGPT, you should mention the specific language, platform, and library that you want the implementation for. For example:
+
+"Translate the given pseudocode into a concrete implementation using JavaScript for the client-side and Node.js with Express and a simple in-memory storage for the server-side."
