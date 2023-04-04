@@ -60,3 +60,35 @@ As a general guideline, to write a source program that gives deterministic outpu
 Keep the architecture modular and generic, with clearly defined interfaces and classes.
 Use high-level, platform-agnostic concepts in your pseudocode.
 Clearly specify the desired programming language, platform, and libraries when requesting the translation from ChatGPT.
+
+# Question
+
+Specify the dependency free formal program for a hello world program that asks the user for a name and displays a greeting.
+
+# Answer
+
+Here's a dependency-free formal program in pseudocode for a simple "Hello, World!" application that takes user input for a name and displays a greeting:
+
+```
+INTERFACE InputOutputInterface
+    METHOD getInput(prompt)
+    METHOD displayOutput(message)
+
+CLASS HelloWorldApplication
+    io: InputOutputInterface
+
+    CONSTRUCTOR(InputOutputInterface)
+        this.io = InputOutputInterface
+
+    METHOD run()
+        io.displayOutput("Welcome to the Hello World application!")
+        name = io.getInput("Please enter your name: ")
+        greeting = "Hello, " + name + "!"
+        io.displayOutput(greeting)
+```
+
+In this pseudocode, we define an InputOutputInterface with methods to handle user input and output. The HelloWorldApplication class has a single constructor that takes an InputOutputInterface as a dependency. The run() method in the HelloWorldApplication class handles the main logic of the application.
+
+When you want to translate this pseudocode into a concrete implementation using ChatGPT, you should mention the specific language, platform, and library that you want the implementation for. For example:
+
+"Translate the given pseudocode into a concrete implementation using Python and the built-in input and print functions for the console."
