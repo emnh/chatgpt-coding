@@ -258,3 +258,46 @@ app.listen(port, () => {
 In this updated code, we've added app.use(express.static(path.join(__dirname, 'public'))); to serve the static files (HTML, CSS, and JavaScript) from the public directory.
 
 Now, when you run the server and visit http://localhost:3000, the index.html file will be served, and you can interact with the persistent "Hello, World!" application.
+
+# Question
+
+Provide a package.json which can be used to `npm install` dependencies.
+
+# Answer
+
+To create a package.json file for your project, follow these steps:
+
+1. Open a terminal or command prompt in your project folder.
+2. Run the command npm init -y to create a package.json file with default values.
+
+Next, open the package.json file in a text editor and add the following dependencies:
+```
+{
+  "name": "persistent-hello-world",
+  "version": "1.0.0",
+  "description": "A persistent Hello World application using Node.js, Express, and JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "hello-world",
+    "express",
+    "node.js",
+    "javascript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.3",
+    "uuid": "^8.3.2"
+  }
+}
+```
+
+Replace the index.js in the "main" field with the name of your server-side JavaScript file if it's different.
+
+Finally, run npm install in the terminal or command prompt to install the dependencies listed in the package.json file.
+
+Now you can start your application by running npm start in the terminal or command prompt, and it will launch the server and serve the HTML file.
